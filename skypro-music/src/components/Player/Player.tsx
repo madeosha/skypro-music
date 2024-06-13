@@ -1,5 +1,5 @@
-import classNames from "classnames"
-import styles from "./Player.module.css"
+import classNames from "classnames";
+import styles from "./Player.module.css";
 
 export const Player = () => {
     return (

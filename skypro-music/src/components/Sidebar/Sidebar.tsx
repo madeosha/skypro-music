@@ -1,5 +1,5 @@
-import Image from "next/image"
-import styles from "./Sidebar.module.css"
+import Image from "next/image";
+import styles from "./Sidebar.module.css";
 
 export const Sidebar = () => {
     return (
@@ -18,7 +18,7 @@ export const Sidebar = () => {
                     <a className={styles.sidebar__link} href="#">
                       <Image
                         className={styles.sidebar__img}
-                        src="img/playlist01.png"
+                        src="/img/playlist01.png"
                         alt="day's playlist"
                         width={250}
                         height={150}
@@ -29,7 +29,7 @@ export const Sidebar = () => {
                     <a className={styles.sidebar__link} href="#">
                       <Image
                         className={styles.sidebar__img}
-                        src="img/playlist02.png"
+                        src="/img/playlist02.png"
                         alt="day's playlist"
                         width={250}
                         height={150}
@@ -40,7 +40,7 @@ export const Sidebar = () => {
                     <a className={styles.sidebar__link} href="#">
                       <Image
                         className={styles.sidebar__img}
-                        src="img/playlist03.png"
+                        src="/img/playlist03.png"
                         alt="day's playlist"
                         width={250}
                         height={150}

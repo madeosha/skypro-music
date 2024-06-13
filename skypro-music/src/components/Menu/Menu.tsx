@@ -1,11 +1,11 @@
-import Image from "next/image"
-import styles from "./Menu.module.css"
+import Image from "next/image";
+import styles from "./Menu.module.css";
 
 export const Menu = () => {
     return (
         <nav className={styles.main__nav}>
               <div className={styles.nav__logo}>
-                <Image src="img/logo.png" className={styles.logo__image} width={113.33} height={17} alt="Логотип"/>
+                <Image src="/img/logo.png" className={styles.logo__image} width={113.33} height={17} alt="Логотип"/>
               </div>
               <div className={styles.nav__burger}>
                 <span className={styles.burger__line}></span>

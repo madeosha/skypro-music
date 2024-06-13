@@ -1,8 +1,8 @@
-import { Centerblock } from "../Centerblock/Centerblock"
-import { Menu } from "../Menu/Menu"
-import { Player } from "../Player/Player"
-import { Sidebar } from "../Sidebar/Sidebar"
-import styles from "./Main.module.css"
+import { Centerblock } from "../Centerblock/Centerblock";
+import { Menu } from "../Menu/Menu";
+import { Player } from "../Player/Player";
+import { Sidebar } from "../Sidebar/Sidebar";
+import styles from "./Main.module.css";
 
 export const Main = () => {
     return (
