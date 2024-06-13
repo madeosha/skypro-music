@@ -9,7 +9,7 @@ export const SignIn = () => {
       <div className={styles.container_enter}>
         <div className={styles.modal__block}>
           <form className={styles.modal__form_login} action="#">
-            <Link href="../">
+            <Link href="/">
               <div className={styles.modal__logo}>
                 <Image src="/img/logo_modal.png" alt="logo" width={140} height={21} />
               </div>
@@ -27,10 +27,10 @@ export const SignIn = () => {
               placeholder="Пароль"
             />
             <button className={styles.modal__btn_enter}>
-              <Link href="../">Войти</Link>
+              <Link href="/signin">Войти</Link>
             </button>
             <button className={styles.modal__btn_signup}>
-              <Link href="signup">Зарегистрироваться</Link>
+              <Link href="/signup">Зарегистрироваться</Link>
             </button>
           </form>
         </div>

@@ -8,7 +8,7 @@ export const SignUp = () => {
       <div className={styles.container_signup}>
         <div className={styles.modal__block}>
           <form className={styles.modal__form_login}>
-            <Link href="../">
+            <Link href="/">
               <div className={styles.modal__logo}>
                 <Image src="/img/logo_modal.png" alt="logo" width={140} height={21} />
               </div>
@@ -32,7 +32,7 @@ export const SignUp = () => {
               placeholder="Повторите пароль"
             />
             <button className={styles.modal__btn_signup_ent}>
-              <Link href="../">Зарегистрироваться</Link>
+              <Link href="/signup">Зарегистрироваться</Link>
             </button>
           </form>
         </div>
