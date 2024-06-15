@@ -9,7 +9,7 @@ import { getTracks } from "../../api/tracksApi";
 
 export const Centerblock = () => {
   // Создаем состояние для списка треков
-  const [tracksList, setTracksList] = React.useState<Track[]>([]);
+  const [tracksList, setTracksList] = useState<Track[]>([]);
   // Выводим треки при загрузке странциы
   useEffect(() => {
     getTracks()
@@ -69,7 +69,9 @@ export const Centerblock = () => {
                           <svg className={styles.track__time_svg}>
                             <use href="img/icon/sprite.svg#icon-like"></use>
                           </svg>
-                          <span className={styles.track__time_text}></span>
+                          <span className={styles.track__time_text}>
+                            {track.duration_in_seconds}
+                          </span>
                         </div>
                       </div>
                     </div>

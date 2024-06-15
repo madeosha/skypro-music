@@ -6,7 +6,7 @@ export type Track = {
     genre: string;
     duration_in_seconds: number;
     album: string;
-    logo: string;
+    logo: string | null;
     track_file: string;
     stared_user: Array<string | number>;
 };
