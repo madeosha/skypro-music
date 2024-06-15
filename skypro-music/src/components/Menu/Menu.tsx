@@ -1,18 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./Menu.module.css";
+import React, { useState } from "react";
 
 export const Menu = () => {
+  // Cоздаем состояние для меню
+  const [menu, setMenu] = React.useState(false);
     return (
         <nav className={styles.main__nav}>
               <div className={styles.nav__logo}>
-                <Image src="/img/logo.png" className={styles.logo__image} width={113.33} height={17} alt="Логотип"/>
+                <Image 
+                  src="/img/logo.png" 
+                  className={styles.logo__image} 
+                  width={113.33} 
+                  height={17} 
+                  alt="Логотип"
+                />
               </div>
-              <div className={styles.nav__burger}>
+              <div
+                onClick={() => {
+                  setMenu((prev) => !prev);
+                }}
+                className={styles.nav__burger}>
                 <span className={styles.burger__line}></span>
                 <span className={styles.burger__line}></span>
                 <span className={styles.burger__line}></span>
               </div>
-              <div className={styles.nav__menu}>
+              {menu ? (
+                <div className={styles.nav__menu}>
                 <ul className={styles.menu__list}>
                   <li className={styles.menu__item}>
                     <a href="#" className={styles.menu__link}>Главное</a>
@@ -25,6 +41,7 @@ export const Menu = () => {
                   </li>
                 </ul>
               </div>
+              ) : null}
             </nav>
-    )
-}
+    );
+};
