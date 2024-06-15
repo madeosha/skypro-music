@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 export const Menu = () => {
   // Cоздаем состояние для меню
-  const [menu, setMenu] = React.useState(false);
+  const [menu, setMenu] = useState(false);
     return (
         <nav className={styles.main__nav}>
               <div className={styles.nav__logo}>
