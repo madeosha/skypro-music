@@ -142,6 +142,11 @@
     height: 12px;
     fill: transparent;
     stroke: #696969;
+    cursor: pointer;
+}
+
+.player__btn_shuffle_svg_active {
+    stroke: #d9d9d9;
 }
 
 .player__track_play {
