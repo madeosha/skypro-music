@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./Filter.module.css";
-import { Track } from "../Centerblock/Centerblock.types";
+import { Track } from "../Main/Main.types";
 
 type FilterProps = {
     tracksList: Track[];
