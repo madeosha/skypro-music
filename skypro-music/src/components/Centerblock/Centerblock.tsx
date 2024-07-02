@@ -1,24 +1,20 @@
 "use client";
-import { Filter } from "../Filter/Filter";
+import Filter from "../Filter/Filter";
 import { Search } from "../Search/Search";
 import styles from "./Centerblock.module.css";
 import classNames from "classnames";
 import React from "react";
 import { Track } from "../Main/Main.types";
 import { useDispatch } from "react-redux";
-import {
-  setCurrentTrack,
-  setTracks,
-  setTracksOrigin,
-  setTracksShuffle,
-} from "@/store/features/playerSlice";
+import { setCurrentTrack } from "../../store/features/playerSlice";
 import { useAppSelector } from "../../store/store";
 
 type Centerblock = {
-  tracks: Track[];
+  filterTracks: Track[];
+  apiTracks: Track[];
 };
 
-export const Centerblock: React.FC<Centerblock> = ({ tracks }) => {
+const Centerblock: React.FC<Centerblock> = ({ filterTracks, apiTracks }) => {
   const dispatch = useDispatch();
   // Вытаскивает текущий трек из глобального состояния
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
@@ -36,7 +32,7 @@ export const Centerblock: React.FC<Centerblock> = ({ tracks }) => {
     <div className={styles.main_centerblock}>
       <Search />
       <h2 className={styles.centerblock__h2}>Треки</h2>
-      <Filter tracksList={tracks} />
+      <Filter apiTracks={apiTracks} />
       <div className={styles.centerblock__content}>
         <div className={styles.content__title}>
           <div className={classNames(styles.playlist_title__col, styles.col01)}>
@@ -55,13 +51,11 @@ export const Centerblock: React.FC<Centerblock> = ({ tracks }) => {
           </div>
         </div>
         <div className={styles.content__playlist}>
-          {tracks.map((track) => {
+          {filterTracks.map((track) => {
             return (
               <div
                 onClick={() => {
-                  dispatch(setCurrentTrack(track)),
-                    dispatch(setTracks(tracks)),
-                    dispatch(setTracksOrigin(tracks));
+                  dispatch(setCurrentTrack(track));
                 }}
                 key={track.id}
                 className={styles.playlist__item}
@@ -116,3 +110,5 @@ export const Centerblock: React.FC<Centerblock> = ({ tracks }) => {
     </div>
   );
 };
+
+export default React.memo(Centerblock);

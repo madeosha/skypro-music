@@ -13,7 +13,7 @@ export const Menu = () => {
                 <Image 
                   src="/img/logo.png" 
                   className={styles.logo__image} 
-                  width={113.33} 
+                  width={113.5} 
                   height={17} 
                   alt="Логотип"
                 />

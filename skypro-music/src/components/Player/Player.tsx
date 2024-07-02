@@ -10,7 +10,6 @@ import {
   setCurrentTrack,
   setIsPlaying,
   setIsShuffle,
-  setTracks,
 } from "../../store/features/playerSlice";
 
 export const Player = () => {
@@ -21,9 +20,9 @@ export const Player = () => {
   const dispatch = useDispatch();
 
   // Вытаскивает текущий плейлист из глобального состояния
-  const currentTrackList = useAppSelector((state) => state.player.tracks);
+  const currentTrackList = useAppSelector((state) => state.player.currentPlaylist);
   // Вытаскивает оригинальный плейлист из глобального состояния
-  const originTrackList = useAppSelector((state) => state.player.tracksOrigin);
+  const originTrackList = useAppSelector((state) => state.player.currentTrack);
   // Вытаскиваем состояние текущего трека
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
   // Находим индекс текущего трека
@@ -60,18 +59,6 @@ export const Player = () => {
     dispatch(setIsShuffle(!isShuffle));
   };
 
-  useEffect(() => {
-    if (isShuffle) {
-      const copyCurrentTrackList = [...currentTrackList];
-      const shuffleTrackList = copyCurrentTrackList.sort(
-        () => 0.5 - Math.random()
-      );
-      dispatch(setTracks(shuffleTrackList));
-    } else {
-      dispatch(setTracks(originTrackList));
-    }
-  }, [isShuffle]);
-
   // Функция для воспроизведения и паузы
   const togglePlay = () => {
     if (audio) {
@@ -90,7 +77,7 @@ export const Player = () => {
       const nextTrack = currentTrackList[currentTrackIndex + 1];
       dispatch(setCurrentTrack(nextTrack));
     }
-  }
+  };
 
   // Функция для воспроизведения предыдущего трека
   const prevTrackClick = () => {
@@ -98,7 +85,7 @@ export const Player = () => {
       const prevTrack = currentTrackList[currentTrackIndex - 1];
       dispatch(setCurrentTrack(prevTrack));
     }
-  }
+  };
 
   // Меняем громкость при изменении ползунка громкости
   useEffect(() => {
@@ -191,7 +178,13 @@ export const Player = () => {
                   styles._btn_icon
                 )}
               >
-                <svg onClick={toggleShuffle} className={classNames(styles.player__btn_shuffle_svg, isShuffle ? styles.player__btn_shuffle_svg_active : null )}>
+                <svg
+                  onClick={toggleShuffle}
+                  className={classNames(
+                    styles.player__btn_shuffle_svg,
+                    isShuffle ? styles.player__btn_shuffle_svg_active : null
+                  )}
+                >
                   <use href="img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
               </div>
