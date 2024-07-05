@@ -20,7 +20,9 @@ export const Player = () => {
   const dispatch = useDispatch();
 
   // Вытаскивает текущий плейлист из глобального состояния
-  const currentTrackList = useAppSelector((state) => state.player.currentPlaylist);
+  const currentTrackList = useAppSelector(
+    (state) => state.player.currentPlaylist
+  );
   // Вытаскивает оригинальный плейлист из глобального состояния
   const originTrackList = useAppSelector((state) => state.player.currentTrack);
   // Вытаскиваем состояние текущего трека
@@ -126,7 +128,7 @@ export const Player = () => {
                     styles._btn
                   )}
                 >
-                  <use href="img/icon/sprite.svg#icon-prev"></use>
+                  <use href="/img/icon/sprite.svg#icon-prev"></use>
                 </svg>
               </div>
               <div className={styles.player__btn_play}>
@@ -138,9 +140,9 @@ export const Player = () => {
                   )}
                 >
                   {isPlaying ? (
-                    <use href="img/icon/sprite.svg#icon-pause"></use>
+                    <use href="/img/icon/sprite.svg#icon-pause"></use>
                   ) : (
-                    <use href="img/icon/sprite.svg#icon-play"></use>
+                    <use href="/img/icon/sprite.svg#icon-play"></use>
                   )}
                 </svg>
               </div>
@@ -152,7 +154,7 @@ export const Player = () => {
                     styles._btn
                   )}
                 >
-                  <use href="img/icon/sprite.svg#icon-next"></use>
+                  <use href="/img/icon/sprite.svg#icon-next"></use>
                 </svg>
               </div>
               <div
@@ -169,7 +171,7 @@ export const Player = () => {
                     isLoop ? styles.player__btn_repeat_svg_active : null
                   )}
                 >
-                  <use href="img/icon/sprite.svg#icon-repeat"></use>
+                  <use href="/img/icon/sprite.svg#icon-repeat"></use>
                 </svg>
               </div>
               <div
@@ -185,7 +187,7 @@ export const Player = () => {
                     isShuffle ? styles.player__btn_shuffle_svg_active : null
                   )}
                 >
-                  <use href="img/icon/sprite.svg#icon-shuffle"></use>
+                  <use href="/img/icon/sprite.svg#icon-shuffle"></use>
                 </svg>
               </div>
             </div>
@@ -199,7 +201,7 @@ export const Player = () => {
               <div className={styles.track_play__contain}>
                 <div className={styles.track_play__image}>
                   <svg className={styles.track_play__svg}>
-                    <use href="img/icon/sprite.svg#icon-note"></use>
+                    <use href="/img/icon/sprite.svg#icon-note"></use>
                   </svg>
                 </div>
                 <div className={styles.track_play__author}>
@@ -222,7 +224,7 @@ export const Player = () => {
                   )}
                 >
                   <svg className={styles.track_play__like_svg}>
-                    <use href="img/icon/sprite.svg#icon-like"></use>
+                    <use href="/img/icon/sprite.svg#icon-like"></use>
                   </svg>
                 </div>
                 <div
@@ -232,7 +234,7 @@ export const Player = () => {
                   )}
                 >
                   <svg className={styles.track_play__dislike_svg}>
-                    <use href="img/icon/sprite.svg#icon-dislike"></use>
+                    <use href="/img/icon/sprite.svg#icon-dislike"></use>
                   </svg>
                 </div>
               </div>
@@ -242,7 +244,7 @@ export const Player = () => {
             <div className={styles.volume__content}>
               <div className={styles.volume__image}>
                 <svg className={styles.volume__svg}>
-                  <use href="img/icon/sprite.svg#icon-volume"></use>
+                  <use href="/img/icon/sprite.svg#icon-volume"></use>
                 </svg>
               </div>
               <div className={classNames(styles.volume__progress, styles._btn)}>

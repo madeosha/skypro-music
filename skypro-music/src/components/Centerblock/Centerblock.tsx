@@ -9,17 +9,19 @@ import { useDispatch } from "react-redux";
 import { setCurrentTrack } from "../../store/features/playerSlice";
 import { useAppSelector } from "../../store/store";
 
-type Centerblock = {
-  filterTracks: Track[];
-  apiTracks: Track[];
-};
+type CenterblockProps = {
+  allTracks: Track[];
+  error: string | null;
+  isLoading: boolean;
+}
 
-const Centerblock: React.FC<Centerblock> = ({ filterTracks, apiTracks }) => {
+const Centerblock = ({ allTracks, error, isLoading } : CenterblockProps) => {
   const dispatch = useDispatch();
   // Вытаскивает текущий трек из глобального состояния
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
   // Вытаскиваем состояние проигрывания из глобального состояния
   const isPlaying = useAppSelector((state) => state.player.isPlaying);
+
   // Функция конвертации секунд в формат с минутами
   const convertSecondsToTime = (seconds: number): string => {
     const min = Math.floor(seconds / 60);
@@ -29,10 +31,10 @@ const Centerblock: React.FC<Centerblock> = ({ filterTracks, apiTracks }) => {
   };
 
   return (
-    <div className={styles.main_centerblock}>
-      <Search />
+    <>
+    {/*  <Search />
       <h2 className={styles.centerblock__h2}>Треки</h2>
-      <Filter apiTracks={apiTracks} />
+      <Filter apiTracks={apiTracks} /> */}
       <div className={styles.centerblock__content}>
         <div className={styles.content__title}>
           <div className={classNames(styles.playlist_title__col, styles.col01)}>
@@ -51,7 +53,7 @@ const Centerblock: React.FC<Centerblock> = ({ filterTracks, apiTracks }) => {
           </div>
         </div>
         <div className={styles.content__playlist}>
-          {filterTracks.map((track) => {
+          {allTracks.map((track) => {
             return (
               <div
                 onClick={() => {
@@ -107,7 +109,7 @@ const Centerblock: React.FC<Centerblock> = ({ filterTracks, apiTracks }) => {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
