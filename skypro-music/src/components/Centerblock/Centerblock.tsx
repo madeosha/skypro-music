@@ -1,6 +1,6 @@
 "use client";
-import Filter from "../Filter/Filter";
-import { Search } from "../Search/Search";
+//import Filter from "../Filter/Filter";
+//import { Search } from "../Search/Search";
 import styles from "./Centerblock.module.css";
 import classNames from "classnames";
 import React from "react";

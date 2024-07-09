@@ -1,14 +1,14 @@
 "use client";
-import Centerblock from "@/components/Centerblock/Centerblock";
-import Filter from "@/components/Filter/Filter";
+import Centerblock from "../../components/Centerblock/Centerblock";
+import Filter from "../../components/Filter/Filter";
 import styles from "./layout.module.css";
-import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect, useMemo, useState } from "react";
-import { getTracks } from "@/api/tracksApi";
-import { Track } from "@/components/Main/Main.types";
-import { setCurrentTracks, setTracks } from "@/store/features/playerSlice";
-import { Sidebar } from "@/components/Sidebar/Sidebar";
-import { Search } from "@/components/Search/Search";
+import { getTracks } from "../../api/tracksApi";
+import { Track } from "../../components/Main/Main.types";
+import { setCurrentTracks, setTracks } from "../../store/features/playerSlice";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { Search } from "../../components/Search/Search";
 
 const MainTracksPage = () => {
   const [error, setError] = useState<string | null>(null);

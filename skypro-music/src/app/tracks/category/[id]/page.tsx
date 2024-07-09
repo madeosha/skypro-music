@@ -31,7 +31,7 @@ const Category = ({ params }: CategoryProps) => {
       .catch((error) => {
         setError("Ошибка загрузки треков");
       });
-  }, []);
+  }, [params.id, dispatch]); //была ошибка
 
   return (
     <>

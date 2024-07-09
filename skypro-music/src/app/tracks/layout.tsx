@@ -1,10 +1,8 @@
 "use client";
 import styles from "./layout.module.css";
-import { Menu } from "@/components/Menu/Menu";
-import { Sidebar } from "@/components/Sidebar/Sidebar";
-import { Player } from "@/components/Player/Player";
-import { useAppSelector } from "@/store/store";
-import { Search } from "@/components/Search/Search";
+import { Menu } from "../../components/Menu/Menu";
+import { Player } from "../../components/Player/Player";
+import { useAppSelector } from "../../store/store";
 
 export default function TracksLayout({
   children,
