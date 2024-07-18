@@ -2,22 +2,29 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "./Filter.module.css";
 import { Track } from "../Main/Main.types";
-import { useDispatch } from "react-redux";
-import { setFilters } from "../../store/features/playerSlice";
-import { useAppSelector } from "../../store/store";
+import { setFilters, setTracks } from "../../store/features/playerSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import classNames from "classnames";
 
 type FilterProps = {
-  apiTracks: Track[];
+  allTracks: Track[];
 };
 
-const Filter: React.FC<FilterProps> = ({ apiTracks }) => {
+const Filter: React.FC<FilterProps> = ({ allTracks }) => {
   // Состояние для фильтрации по исполнителям
   const [toggleExecutors, setToggleExecutors] = useState(false);
   // Состояние для количества выбранных фильтров по исполнителям
   const [arrExecutors, setArrExecutors] = useState<string[]>([]);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setTracks(allTracks));
+  }, [dispatch, allTracks]);
+
+  const apiTracks = useAppSelector((state) => state.player.playlist);
+  // Используем UseMemo для кэширования значений apiTracks и filterTracks, чтобы избежать лишних вычислений при ререндерах
+  const memoizedApiTracks = useMemo(() => apiTracks, [apiTracks]);
 
   useEffect(() => {
     dispatch(
@@ -97,7 +104,6 @@ const Filter: React.FC<FilterProps> = ({ apiTracks }) => {
       ),
     ];
   }, [apiTracks]);
-
 
   // Функция для изменения состояния по клику на фильтрацию жанрам
   const handleGenres = () => {
