@@ -11,7 +11,6 @@ export default function TracksLayout({
 }>) {
   // Вытаскиваем состояние текущего трека
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
-  console.log(currentTrack);
 
   return (
     <div className={styles.wrapper}>

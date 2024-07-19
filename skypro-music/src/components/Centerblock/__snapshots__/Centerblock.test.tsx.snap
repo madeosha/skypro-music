@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Корректный рендер компонента Centerblock Дополнительный тест для проверки рендера состояния загрузки 1`] = `
 <div
   className="centerblock__content"

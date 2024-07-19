@@ -10,6 +10,7 @@ import { useAppSelector } from "../../store/store";
 type CenterblockProps = {
   allTracks: Track[];
   errorMessage: string | null;
+  isLoading: boolean;
 }
 
 const Centerblock = ({ allTracks, errorMessage } : CenterblockProps) => {

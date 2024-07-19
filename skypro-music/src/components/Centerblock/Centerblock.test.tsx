@@ -50,7 +50,7 @@ describe("Корректный рендер компонента Centerblock", (
   it("Корректный рендер компонента Centerblock с треками", () => {
     const component = renderer.create(
       <Provider store={store}>
-        <Centerblock allTracks={allTracks} error={null} isLoading={false} />
+        <Centerblock allTracks={allTracks} errorMessage={null} isLoading={false} />
       </Provider>
     );
     let tree = component.toJSON();
@@ -60,7 +60,7 @@ describe("Корректный рендер компонента Centerblock", (
   it("Дополнительный тест для проверки рендера состояния загрузки", () => {
     const component = renderer.create(
       <Provider store={store}>
-        <Centerblock allTracks={[]} error={null} isLoading={true} />
+        <Centerblock allTracks={[]} errorMessage={null} isLoading={true} />
       </Provider>
     );
     let tree = component.toJSON();
