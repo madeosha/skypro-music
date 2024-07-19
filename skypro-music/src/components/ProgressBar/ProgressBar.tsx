@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./ProgressBar.module.css";
+import { formatSeconds } from "@/utils/formatSeconds";
 
 type ProgressBar = {
     currentTime: number;
@@ -9,18 +10,6 @@ type ProgressBar = {
 }
 
 export const ProgressBar: React.FC<ProgressBar> = ({currentTime, duration, audioRef}) => {
-
-	function formatSeconds(seconds : number) : string {
-        // Округляем до ближайшего меньшего целого
-        const flooredSeconds = Math.floor(seconds);
-        // Получаем количество минут
-        const minutes = Math.floor(flooredSeconds / 60);
-        // Получаем оставшиеся секунды
-        const remainingSeconds = flooredSeconds % 60;
-        // Форматируем так, чтобы у оставшихся секунд было два знака (например, 08 вместо 8)
-        const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
-        return `${minutes}:${formattedSeconds}`;
-    }
 
 	return (
 		<div className={styles.bar__player_progress}>
