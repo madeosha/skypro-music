@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import Centerblock from "./Centerblock";
 import { Track } from "../Main/Main.types";
+import Centerblock from "./Centerblock";
 
 // Создаем mock store
 const mockStore = configureStore([]);
@@ -16,6 +16,7 @@ describe("Корректный рендер компонента Centerblock", (
       player: {
         currentTrack: null,
         isPlaying: false,
+        filterPlaylist: [],
       },
     });
   });

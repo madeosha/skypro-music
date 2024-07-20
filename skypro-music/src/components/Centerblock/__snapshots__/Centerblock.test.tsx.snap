@@ -40,4 +40,42 @@ exports[`Корректный рендер компонента Centerblock До
 </div>
 `;
 
-exports[`Корректный рендер компонента Centerblock Корректный рендер компонента Centerblock с треками 1`] = `"Загружаем треки"`;
+exports[`Корректный рендер компонента Centerblock Корректный рендер компонента Centerblock с треками 1`] = `
+<div
+  className="centerblock__content"
+>
+  <div
+    className="content__title"
+  >
+    <div
+      className="playlist_title__col col01"
+    >
+      Трек
+    </div>
+    <div
+      className="playlist_title__col col02"
+    >
+      Исполнитель
+    </div>
+    <div
+      className="playlist_title__col col03"
+    >
+      Альбом
+    </div>
+    <div
+      className="playlist_title__col col04"
+    >
+      <svg
+        className="playlist_title__svg"
+      >
+        <use
+          href="/img/icon/sprite.svg#icon-watch"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="content__playlist"
+  />
+</div>
+`;

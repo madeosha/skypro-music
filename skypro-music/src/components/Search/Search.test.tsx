@@ -58,7 +58,7 @@ describe("Компонент Search", () => {
     expect(actions).toEqual([
       {
         type: setFilters.type,
-        payload: { searcString: 'test query' }
+        payload: { searchString: 'test query' }
       }
     ]);
   });
