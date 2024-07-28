@@ -1,16 +1,16 @@
 .centerblock__filter {
     display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 51px;
-  position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 51px;
+    position: relative;
 }
 
 .filter__title {
@@ -20,8 +20,9 @@
     line-height: 24px;
     margin-right: 15px;
 }
-  
+
 .filter__button {
+    position: relative;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -32,11 +33,11 @@
     cursor: pointer;
     user-select: none;
 }
-  
+
 .filter__button:not(:last-child) {
     margin-right: 10px;
 }
-  
+
 .executors__modal {
     width: 288px;
     height: 305px;
@@ -51,7 +52,7 @@
     top: 48px;
     left: 101px;
 }
-  
+
 .years__modal {
     width: 240px;
     height: 196px;
@@ -66,7 +67,7 @@
     top: 48px;
     left: 265px;
 }
-  
+
 .genres__modal {
     width: 298px;
     height: fit-content;
@@ -82,7 +83,7 @@
     top: 48px;
     left: 426px;
 }
-  
+
 .modal_el {
     font-style: normal;
     font-weight: 400;
@@ -91,4 +92,22 @@
     color: white;
     cursor: pointer;
     user-select: none;
+}
+
+.modal_el_active {
+    color: rgb(182, 114, 255);
+    text-decoration: underline;
+}
+
+.count_executors {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    width: 26px;
+    height: 26px;
+    background-color: #ad61ff;
+    border-radius: 13px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
 }

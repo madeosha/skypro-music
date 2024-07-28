@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Корректный рендер компонента Player Корректный рендер компонента Player 1`] = `
+<div
+  className="bar"
+>
+  <audio
+    onTimeUpdate={[Function]}
+    src="/path/to/track1.mp3"
+  />
+  <div
+    className="bar__content"
+  >
+    <div
+      className="bar__player_progress"
+    >
+      <div
+        className="bar__currentTime"
+      >
+        0:00
+         / 
+        0:00
+      </div>
+      <input
+        className="styledProgressInput"
+        max={0}
+        min={0}
+        onChange={[Function]}
+        step={0.01}
+        type="range"
+        value={0}
+      />
+    </div>
+    <div
+      className="bar__player_block"
+    >
+      <div
+        className="bar__player"
+      >
+        <div
+          className="player__controls"
+        >
+          <div
+            className="player__btn_prev"
+          >
+            <svg
+              className="player__btn_prev_svg _btn"
+              onClick={[Function]}
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-prev"
+              />
+            </svg>
+          </div>
+          <div
+            className="player__btn_play"
+          >
+            <svg
+              className="player__btn_play_svg _btn"
+              onClick={[Function]}
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-play"
+              />
+            </svg>
+          </div>
+          <div
+            className="player__btn_next"
+          >
+            <svg
+              className="player__btn_next_svg _btn"
+              data-testid="next-track-button"
+              onClick={[Function]}
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-next"
+              />
+            </svg>
+          </div>
+          <div
+            className="player__btn_repeat _btn_icon"
+          >
+            <svg
+              className="player__btn_repeat_svg _btn"
+              onClick={[Function]}
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-repeat"
+              />
+            </svg>
+          </div>
+          <div
+            className="player__btn_shuffle _btn_icon"
+          >
+            <svg
+              className="player__btn_shuffle_svg"
+              onClick={[Function]}
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-shuffle"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          className="player__track_play track_play"
+        >
+          <div
+            className="track_play__contain"
+          >
+            <div
+              className="track_play__image"
+            >
+              <svg
+                className="track_play__svg"
+              >
+                <use
+                  href="/img/icon/sprite.svg#icon-note"
+                />
+              </svg>
+            </div>
+            <div
+              className="track_play__author"
+            >
+              <a
+                className="track_play__author_link"
+                href="http://"
+              >
+                Track 1
+              </a>
+            </div>
+            <div
+              className="track_play__album"
+            >
+              <a
+                className="track_play__album_link"
+                href="http://"
+              >
+                Artist 1
+              </a>
+            </div>
+          </div>
+          <div
+            className="track_play__like_dis"
+          >
+            <div
+              className="track_play__like _btn_icon"
+            >
+              <svg
+                className="track_play__like_svg"
+              >
+                <use
+                  href="/img/icon/sprite.svg#icon-like"
+                />
+              </svg>
+            </div>
+            <div
+              className="track_play__dislike _btn_icon"
+            >
+              <svg
+                className="track_play__dislike_svg"
+              >
+                <use
+                  href="/img/icon/sprite.svg#icon-dislike"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="bar__volume_block volume"
+      >
+        <div
+          className="volume__content"
+        >
+          <div
+            className="volume__image"
+          >
+            <svg
+              className="volume__svg"
+            >
+              <use
+                href="/img/icon/sprite.svg#icon-volume"
+              />
+            </svg>
+          </div>
+          <div
+            className="volume__progress _btn"
+          >
+            <input
+              className="volume__progress_line _btn"
+              max="1"
+              min="0"
+              onChange={[Function]}
+              step="0.01"
+              type="range"
+              value="0.5"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
