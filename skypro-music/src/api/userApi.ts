@@ -107,8 +107,27 @@ export const fetchAddFavoriteTraks = async (
   accessToken: string,
   id: number
 ) => {
-  const response = await fetch(`${baseUrl}catalog/track/<${id}>/favorite/`, {
+  const response = await fetch(`${baseUrl}catalog/track/${id}/favorite/`, {
     method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка добавления в избранное");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const fetchDeleteFavoriteTraks = async (
+  accessToken: string,
+  id: number
+) => {
+  const response = await fetch(`${baseUrl}catalog/track/${id}/favorite/`, {
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

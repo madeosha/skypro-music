@@ -1,19 +1,30 @@
-import { fetchAddFavoriteTraks } from "@/api/userApi";
+import { fetchAddFavoriteTraks, fetchDeleteFavoriteTraks, fetchFavoriteTraks } from "@/api/userApi";
 import { Track } from "@/components/Main/Main.types";
-import { useAppSelector } from "@/store/store";
+import { setDislikeTrack, setLikeTrack } from "@/store/features/playerSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export const useLikeTrack = (track: Track) => {
+    const dispatch = useAppDispatch();
     const tokens = useAppSelector((state) => state.auth.tokens);
     const likedTracks = useAppSelector((state) => state.player.likedTracks);
     // Логика проверки наличия трека в списке лайкнутых
-    const isLiked = likedTracks.find((el) => el === track);
+    const isLiked = likedTracks.some((el) => el.id === track.id);
 
-    const handleLike = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleLike = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+        e.stopPropagation();
 
         // Логика работы с лайками треков (ставить и удалять)
         if (tokens.access) {
-            isLiked ? fetchAddFavoriteTraks(tokens.access, track.id) : false;
+            if (isLiked) {
+                await fetchDeleteFavoriteTraks(tokens.access, track.id);
+                dispatch(setDislikeTrack(track));
+            }
+            else {
+                await fetchAddFavoriteTraks(tokens.access, track.id);
+                dispatch(setLikeTrack(track));
+            }
+            const favTr = await fetchFavoriteTraks(tokens.access);  
         }
     };
     return { isLiked, handleLike };
-  };
+  }; 
