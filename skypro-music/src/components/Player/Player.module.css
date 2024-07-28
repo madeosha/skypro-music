@@ -73,17 +73,17 @@
 .player__btn_next,
 .player__btn_repeat,
 .player__btn_shuffle {
-  padding: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+    padding: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .player__btn_prev {
-  margin-right: 23px;
+    margin-right: 23px;
 }
 
 .player__btn_prev_svg {
@@ -105,7 +105,7 @@
     margin-right: 28px;
     fill: #a53939;
 }
-  
+
 .player__btn_next_svg {
     width: 15px;
     height: 14px;
@@ -116,7 +116,7 @@
 .player__btn_repeat {
     margin-right: 24px;
 }
-  
+
 .player__btn_repeat_svg {
     width: 18px;
     height: 12px;
@@ -136,7 +136,7 @@
     -ms-flex-align: center;
     align-items: center;
 }
-  
+
 .player__btn_shuffle_svg {
     width: 19px;
     height: 12px;
@@ -165,7 +165,7 @@
     display: grid;
     -ms-grid-columns: auto 1fr;
     grid-template-columns: auto 1fr;
-    grid-template-areas: "image author" "image album";
+    grid-template-areas: "image author""image album";
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -204,7 +204,7 @@
     grid-area: author;
     min-width: 49px;
 }
-  
+
 .track_play__author_link {
     font-style: normal;
     font-weight: 400;
@@ -245,7 +245,7 @@
 
 .track_play__like,
 .track_play__dislike {
-  padding: 5px;
+    padding: 5px;
 }
 
 .track_play__like_svg {
@@ -254,11 +254,11 @@
     fill: transparent;
     stroke: #696969;
 }
-  
+
 .track_play__dislike {
     margin-left: 28.5px;
 }
-  
+
 .track_play__dislike_svg {
     width: 14.34px;
     height: 13px;
@@ -281,23 +281,23 @@
     -ms-flex-pack: end;
     justify-content: end;
 }
-  
+
 .volume__image {
     width: 13px;
     height: 18px;
     margin-right: 17px;
 }
-  
+
 .volume__svg {
     width: 13px;
     height: 18px;
     fill: transparent;
 }
-  
+
 .volume__progress {
     width: 109px;
 }
-  
+
 .volume__progress_line {
     width: 109px;
 }

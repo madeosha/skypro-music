@@ -36,7 +36,11 @@ exports[`Корректный рендер компонента Centerblock До
   </div>
   <div
     className="content__playlist"
-  />
+  >
+    <span>
+      Треки не найдены
+    </span>
+  </div>
 </div>
 `;
 
@@ -76,6 +80,10 @@ exports[`Корректный рендер компонента Centerblock Ко
   </div>
   <div
     className="content__playlist"
-  />
+  >
+    <span>
+      Треки не найдены
+    </span>
+  </div>
 </div>
 `;

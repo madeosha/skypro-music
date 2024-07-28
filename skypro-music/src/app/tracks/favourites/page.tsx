@@ -6,11 +6,35 @@ import { Search } from "../../../components/Search/Search";
 import { Track } from "../../../components/Main/Main.types";
 import { useAppSelector } from "../../../store/store";
 import Centerblock from "../../../components/Centerblock/Centerblock";
+import { fetchFavoriteTraks } from "@/api/userApi";
+import { useEffect, useState } from "react";
 
 const FavouritesTracksPage = () => {
 
-    const tracks: Track[] = useAppSelector((state) => state.player.likedTracks);
+    const stateFavTracks: Track[] = useAppSelector((state) => state.player.likedTracks);
+    const token = useAppSelector((state) => state.auth.tokens.access);
+
+    const [tracks, setTracks] = useState<Track[]>([]);
+
     let errorMessage: string | null = null;
+
+    useEffect(() => {
+        const fetchFavouritesTracks = async () => {
+            if (!token) {
+                return;
+            }
+            try {
+                const fetchedTracks = await fetchFavoriteTraks(token);
+                setTracks(fetchedTracks);
+            } catch (err: unknown) {
+                errorMessage =
+                err instanceof Error
+                    ? "Возникли проблемы при загрузке треков: " + err.message
+                    : "Неизвестная ошибка";
+            };
+        };
+        fetchFavouritesTracks();
+    }, [token, stateFavTracks]);
 
     return (
         <>

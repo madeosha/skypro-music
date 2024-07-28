@@ -14,6 +14,12 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    overflow: auto;
+    height: 100vh;
+    padding-bottom: 496px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
 }
 
 .content__title {
@@ -183,6 +189,10 @@
     font-size: 16px;
     line-height: 24px;
     color: #696969;
+}
+
+.track__time {
+    width: 66px;
 }
 
 .track__time_svg {

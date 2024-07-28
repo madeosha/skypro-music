@@ -60,17 +60,21 @@ const Centerblock = ({ allTracks, errorMessage }: CenterblockProps) => {
             </div>
           </div>
           <div className={styles.content__playlist}>
-            {memoizedFilterTracks.map((track) => {
-              return (
-                <TrackItem
-                  key={track.id}
-                  track={track}
-                  isCurrentTrack={track.id === currentTrack?.id}
-                  isPlaying={isPlaying}
-                  onClick={() => dispatch(setCurrentTrack(track))}
-                />
-              );
-            })}
+            {memoizedFilterTracks.length > 0 ? (
+              memoizedFilterTracks.map((track) => {
+                return (
+                  <TrackItem
+                    key={track.id}
+                    track={track}
+                    isCurrentTrack={track.id === currentTrack?.id}
+                    isPlaying={isPlaying}
+                    onClick={() => dispatch(setCurrentTrack(track))}
+                  />
+                );
+              })
+            ) : (
+              <span>Треки не найдены</span>
+            )}
           </div>
         </div>
       )}

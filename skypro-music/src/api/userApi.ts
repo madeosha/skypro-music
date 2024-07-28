@@ -29,8 +29,9 @@ export const fetchAddUser = async ({
       errorMessage = data.email[0];
     } else if (data.password) {
       errorMessage = data.password[0];
-    }
-    throw new Error(errorMessage);
+  }
+
+  throw new Error(errorMessage);
   } else if (!response.ok) {
     throw new Error("Ошибка");
   }
@@ -49,6 +50,7 @@ export const fetchUser = async ({ email, password }: SignInFormType) => {
       "Content-Type": "application/json",
     },
   });
+
   const data = await response.json();
 
   if (response.status === 500) {
@@ -58,8 +60,7 @@ export const fetchUser = async ({ email, password }: SignInFormType) => {
     if (data.detail) {
       errorMessage = data.detail[0];
     }
-  }
-
+  } 
   return data;
 };
 
@@ -94,7 +95,7 @@ export const fetchFavoriteTraks = async (accessToken: string) => {
   });
 
   if (response.status === 401) {
-    throw new Error("Токен устарел");
+    throw new Error("Токен протух");
   } else if (!response.ok) {
     throw new Error("Ошибка получения токена");
   }

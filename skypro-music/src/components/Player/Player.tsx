@@ -246,18 +246,7 @@ export const Player = () => {
                     ></use>
                   </svg>
                 </div>
-                {/*
-                <div
-                  className={classNames(
-                    styles.track_play__dislike,
-                    styles._btn_icon
-                  )}
-                >
-                  <svg className={styles.track_play__dislike_svg}>
-                    <use href="/img/icon/sprite.svg#icon-dislike"></use>
-                  </svg>
-                </div>
-              </div> */}
+              </div> 
             </div>
           </div>
           <div className={classNames(styles.bar__volume_block, styles.volume)}>
