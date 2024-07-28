@@ -133,6 +133,9 @@ const playerSlice = createSlice({
         (element) => element.id !== action.payload.id
       );
     },
+    clearLikedTracks: (state) => {
+      state.likedTracks = [];
+    },
   },
   extraReducers(builder) {
     builder.addCase(
@@ -153,6 +156,7 @@ export const {
   setFilters,
   setLikeTrack,
   setDislikeTrack,
+  clearLikedTracks,
 } = playerSlice.actions;
 
 export const playerReducer = playerSlice.reducer;

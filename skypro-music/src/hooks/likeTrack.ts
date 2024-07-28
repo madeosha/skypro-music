@@ -23,7 +23,6 @@ export const useLikeTrack = (track: Track) => {
                 await fetchAddFavoriteTraks(tokens.access, track.id);
                 dispatch(setLikeTrack(track));
             }
-            const favTr = await fetchFavoriteTraks(tokens.access);  
         }
     };
     return { isLiked, handleLike };
