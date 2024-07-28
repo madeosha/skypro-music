@@ -17,6 +17,8 @@ export const SignUp = () => {
     username: "",
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => {
@@ -33,7 +35,7 @@ export const SignUp = () => {
       await Promise.all([dispatch(getRegUser(formData)).unwrap()]);
       router.push("/signin");
     } catch (error) {
-      console.log(error);
+      setError(error.message);
     }
   };
   return (
@@ -81,6 +83,7 @@ export const SignUp = () => {
             >
               Зарегистрироваться
             </button>
+            {error && <div className={styles.error}>{error}</div>}
           </form>
         </div>
       </div>

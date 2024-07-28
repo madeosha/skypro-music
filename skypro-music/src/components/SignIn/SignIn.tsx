@@ -13,6 +13,7 @@ export const SignIn = () => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,12 +29,12 @@ export const SignIn = () => {
     e.preventDefault();
     try {
       await Promise.all([
-        dispatch(getTokens(formData)).unwrap(),
         dispatch(getAuthUser(formData)).unwrap(),
+        dispatch(getTokens(formData)).unwrap(),
       ]);
       router.push("/");
     } catch (error) {
-      console.log(error);
+      setError("Неверный логин или пароль");
     }
   };
   return (
@@ -70,6 +71,7 @@ export const SignIn = () => {
             <button className={styles.modal__btn_enter} onClick={handleSubmit}>
               Войти
             </button>
+            {error && <div className={styles.error}>{error}</div>}
             <button className={styles.modal__btn_signup}>
               <Link href="/signup">Зарегистрироваться</Link>
             </button>

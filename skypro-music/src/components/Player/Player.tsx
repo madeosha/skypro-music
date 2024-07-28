@@ -10,6 +10,7 @@ import {
   setIsPlaying,
   setIsShuffle,
 } from "../../store/features/playerSlice";
+import { useLikeTrack } from "../../hooks/likeTrack";
 
 export const Player = () => {
   // Получаем ссылку на DOM-элемент audio
@@ -22,23 +23,30 @@ export const Player = () => {
   const currentTrackList = useAppSelector(
     (state) => state.player.currentPlaylist
   );
+
   // Вытаскивает оригинальный плейлист из глобального состояния
   const originTrackList = useAppSelector((state) => state.player.currentTrack);
+
   // Вытаскиваем состояние текущего трека
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
+  const {isLiked = false, handleLike = () => {}} = currentTrack ? useLikeTrack(currentTrack) : {};
+
   // Находим индекс текущего трека
   const currentTrackIndex = currentTrackList.findIndex(
     (track) => track.id === currentTrack?.id
   );
   // Состояние плеера из глобального состояния
   const isPlaying = useAppSelector((state) => state.player.isPlaying);
+
   // Состояние режима перемешивания из глобального состояния
   const isShuffle = useAppSelector((state) => state.player.isShuffle);
 
   // Состояние громкости
   const [isVolume, setIsVolume] = useState("0.5");
+
   // Состояние текущего времени
   const [currentTime, setCurrentTime] = useState(0);
+
   // Состояние повтора
   const [isLoop, setIsLoop] = useState(false);
 
@@ -224,7 +232,7 @@ export const Player = () => {
                   )}
                 >
                   <svg className={styles.track_play__like_svg}>
-                    <use href="/img/icon/sprite.svg#icon-like"></use>
+                    <use href="/img/icon/sprite.svg#icon-like"{isLiked}></use>
                   </svg>
                 </div>
                 <div
