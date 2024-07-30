@@ -1,7 +1,8 @@
-import { fetchAddFavoriteTraks, fetchDeleteFavoriteTraks, fetchFavoriteTraks } from "@/api/userApi";
+import { fetchAddFavoriteTraks, fetchDeleteFavoriteTraks } from "@/action";
 import { Track } from "@/components/Main/Main.types";
 import { setDislikeTrack, setLikeTrack } from "@/store/features/playerSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
+import { fetchFavoriteTraks } from "@/api/userApi";
 
 export const useLikeTrack = (track: Track) => {
     const dispatch = useAppDispatch();

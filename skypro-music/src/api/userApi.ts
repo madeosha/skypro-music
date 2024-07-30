@@ -1,4 +1,5 @@
 import { SignInFormType, SignUpFormType } from "../types/types";
+import { revalidateTag } from "next/cache";
 
 const baseUrl = "https://skypro-music-api.skyeng.tech/";
 
@@ -92,50 +93,16 @@ export const fetchFavoriteTraks = async (accessToken: string) => {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
+    cache: "no-cache",
+    next: {
+      tags: ["traks"],
+    },
   });
 
   if (response.status === 401) {
     throw new Error("Токен протух");
   } else if (!response.ok) {
     throw new Error("Ошибка получения токена");
-  }
-
-  const data = await response.json();
-  return data;
-};
-
-export const fetchAddFavoriteTraks = async (
-  accessToken: string,
-  id: number
-) => {
-  const response = await fetch(`${baseUrl}catalog/track/${id}/favorite/`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Ошибка добавления в избранное");
-  }
-
-  const data = await response.json();
-  return data;
-};
-
-export const fetchDeleteFavoriteTraks = async (
-  accessToken: string,
-  id: number
-) => {
-  const response = await fetch(`${baseUrl}catalog/track/${id}/favorite/`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Ошибка добавления в избранное");
   }
 
   const data = await response.json();
