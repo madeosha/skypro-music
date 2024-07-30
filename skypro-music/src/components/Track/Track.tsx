@@ -3,7 +3,6 @@ import styles from "../Centerblock/Centerblock.module.css";
 import classNames from "classnames";
 import { Track } from "../Main/Main.types";
 import { MouseEventHandler, useEffect } from "react";
-import { useAppSelector } from "@/store/store";
 
 type TrackProps = {
     track: Track;

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "../store/ReduxeProvider";
-import { Providers } from "@/components/Providers/Providers";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -17,12 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <>
+      <html lang="ru">
       <ReduxProvider>
-        <Providers>
           <body className={montserrat.className}>{children}</body>
-        </Providers>
       </ReduxProvider>
     </html>
+    </>
   );
 }

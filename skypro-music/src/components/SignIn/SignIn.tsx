@@ -5,62 +5,36 @@ import Link from "next/link";
 import classNames from "classnames";
 import React, { useState } from "react";
 import { useAppDispatch } from "@/store/store";
-import { setTokens, setUser } from "@/store/features/authSlice";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { getTokens, getAuthUser } from "@/store/features/authSlice";
 
 export const SignIn = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const result = await signIn("credentials", {
-      email: formData.email,
-      password: formData.password,
-      redirect: false,
-    });
 
-    if (!result || result.error) {
+    try {
+      await Promise.all([
+        dispatch(getAuthUser(formData)).unwrap(),
+        dispatch(getTokens(formData)).unwrap(),
+      ]);
+      router.push("/");
+    } catch (error) {
       setError("Неверный логин или пароль");
-    } else {
-      // Ждем, пока токены будут добавлены в куки
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Обновляем сессию
-      const updatedSession = await getSessionFromServer();
-
-      // Проверяем токены и обновляем стора
-      if (updatedSession) {
-        const accessToken = updatedSession.accessToken;
-        const user = updatedSession.user;
-        const name = user?.name;
-        const email = user?.email;
-
-        if (accessToken && name && email) {
-          dispatch(setTokens({ accessToken }));
-          dispatch(setUser({ name, email }));
-          router.push("/");
-        } else {
-          setError("Не удалось получить токены");
-        }
-      }
     }
-  };
-  const getSessionFromServer = async () => {
-    const res = await fetch("/api/auth/session");
-    if (res.ok) {
-      return await res.json();
-    }
-    return null;
   };
   return (
     <div className={styles.wrapper}>
