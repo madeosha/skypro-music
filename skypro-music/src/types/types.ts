@@ -10,9 +10,6 @@ export type SignUpFormType = {
 };
 
 export type UserType = {
-  id: number;
-  username: string;
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
 };
