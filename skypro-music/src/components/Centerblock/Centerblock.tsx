@@ -11,7 +11,6 @@ import TrackItem from "../Track/Track";
 type CenterblockProps = {
   allTracks: Track[];
   errorMessage: string | null;
-  isLoading: boolean;
 };
 
 const Centerblock = ({ allTracks, errorMessage }: CenterblockProps) => {

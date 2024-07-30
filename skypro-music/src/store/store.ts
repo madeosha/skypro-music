@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { playerReducer } from "./features/playerSlice";
+import { authReducer } from "./features/authSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector, useStore } from "react-redux";
 
 // Функция makeStore создает и возвращает хранилище Redux с помощью функции configureStore.
@@ -7,6 +8,7 @@ export const makeStore = () => {
   return configureStore({
     // Мы передаем объект, в котором свойство reducer содержит корневой редьюсер, объединяющий все редьюсеры нашего приложения.
     reducer: combineReducers({
+      auth: authReducer,
       player: playerReducer,
     }),
   });

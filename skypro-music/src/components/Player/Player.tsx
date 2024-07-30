@@ -16,60 +16,46 @@ export const Player = () => {
   // Получаем ссылку на DOM-элемент audio
   const audioRef = useRef<HTMLAudioElement>(null);
   const audio = audioRef.current;
-
   const dispatch = useDispatch();
-
   // Вытаскивает текущий плейлист из глобального состояния
   const currentTrackList = useAppSelector(
     (state) => state.player.currentPlaylist
   );
-
   // Вытаскивает оригинальный плейлист из глобального состояния
   const originTrackList = useAppSelector((state) => state.player.currentTrack);
-
   // Вытаскиваем состояние текущего трека
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
   const { isLiked, handleLike } = currentTrack
     ? useLikeTrack(currentTrack)
     : { isLiked: false, handleLike: () => {} };
-
   // Находим индекс текущего трека
   const currentTrackIndex = currentTrackList.findIndex(
     (track) => track.id === currentTrack?.id
   );
   // Состояние плеера из глобального состояния
   const isPlaying = useAppSelector((state) => state.player.isPlaying);
-
   // Состояние режима перемешивания из глобального состояния
   const isShuffle = useAppSelector((state) => state.player.isShuffle);
-
   // Состояние громкости
   const [isVolume, setIsVolume] = useState("0.5");
-
   // Состояние текущего времени
   const [currentTime, setCurrentTime] = useState(0);
-
   // Состояние повтора
   const [isLoop, setIsLoop] = useState(false);
-
   const duration: number = audio?.duration || 0;
   audio ? (audio.loop = isLoop) : null;
-
   // Функция для переключения следующего трека
   const handleEnded = () => {
     nextTrackClick();
   };
-
   // Функция зацикливания трека
   const toggleLoop = () => {
     setIsLoop(!isLoop);
   };
-
   // Функция для включения режима перемешивания
   const toggleShuffle = () => {
     dispatch(setIsShuffle(!isShuffle));
   };
-
   // Функция для воспроизведения и паузы
   const togglePlay = () => {
     if (audio) {
@@ -81,7 +67,6 @@ export const Player = () => {
     }
     dispatch(setIsPlaying(!isPlaying));
   };
-
   // Функция для воспроизведения следующего трека
   const nextTrackClick = () => {
     if (currentTrackIndex < currentTrackList.length - 1) {
@@ -89,7 +74,6 @@ export const Player = () => {
       dispatch(setCurrentTrack(nextTrack));
     }
   };
-
   // Функция для воспроизведения предыдущего трека
   const prevTrackClick = () => {
     if (currentTrackIndex !== 0) {
@@ -97,14 +81,12 @@ export const Player = () => {
       dispatch(setCurrentTrack(prevTrack));
     }
   };
-
   // Меняем громкость при изменении ползунка громкости
   useEffect(() => {
     if (audio) {
       audio.volume = parseFloat(isVolume);
     }
   }, [isVolume, audio]); // была ошибка
-
   useEffect(() => {
     const audio = audioRef.current;
     audio?.addEventListener("ended", handleEnded);
@@ -246,7 +228,7 @@ export const Player = () => {
                     ></use>
                   </svg>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
           <div className={classNames(styles.bar__volume_block, styles.volume)}>
