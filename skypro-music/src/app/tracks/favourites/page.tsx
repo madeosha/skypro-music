@@ -6,7 +6,7 @@ import { Track } from "../../../components/Main/Main.types";
 import { useAppSelector } from "@/store/store";
 import Filter from "@/components/Filter/Filter";
 import Centerblock from "@/components/Centerblock/Centerblock";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const FavouritesTracksPage = () => {

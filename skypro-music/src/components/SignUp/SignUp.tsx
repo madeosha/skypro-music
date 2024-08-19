@@ -34,8 +34,12 @@ export const SignUp = () => {
     try {
       await Promise.all([dispatch(getRegUser(formData)).unwrap()]);
       router.push("/signin");
-    } catch (error) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Неизвестная ошибка");
+      }
     }
   };
   return (
