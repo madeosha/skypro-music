@@ -10,14 +10,13 @@ import {
   setIsPlaying,
   setIsShuffle,
 } from "../../store/features/playerSlice";
+import { useLikeTrack } from "../../hooks/likeTrack";
 
 export const Player = () => {
   // Получаем ссылку на DOM-элемент audio
   const audioRef = useRef<HTMLAudioElement>(null);
   const audio = audioRef.current;
-
   const dispatch = useDispatch();
-
   // Вытаскивает текущий плейлист из глобального состояния
   const currentTrackList = useAppSelector(
     (state) => state.player.currentPlaylist
@@ -26,6 +25,9 @@ export const Player = () => {
   const originTrackList = useAppSelector((state) => state.player.currentTrack);
   // Вытаскиваем состояние текущего трека
   const currentTrack = useAppSelector((state) => state.player.currentTrack);
+  const { isLiked, handleLike } = currentTrack
+    ? useLikeTrack(currentTrack)
+    : { isLiked: false, handleLike: () => {} };
   // Находим индекс текущего трека
   const currentTrackIndex = currentTrackList.findIndex(
     (track) => track.id === currentTrack?.id
@@ -34,32 +36,26 @@ export const Player = () => {
   const isPlaying = useAppSelector((state) => state.player.isPlaying);
   // Состояние режима перемешивания из глобального состояния
   const isShuffle = useAppSelector((state) => state.player.isShuffle);
-
   // Состояние громкости
   const [isVolume, setIsVolume] = useState("0.5");
   // Состояние текущего времени
   const [currentTime, setCurrentTime] = useState(0);
   // Состояние повтора
   const [isLoop, setIsLoop] = useState(false);
-
   const duration: number = audio?.duration || 0;
   audio ? (audio.loop = isLoop) : null;
-
   // Функция для переключения следующего трека
   const handleEnded = () => {
     nextTrackClick();
   };
-
   // Функция зацикливания трека
   const toggleLoop = () => {
     setIsLoop(!isLoop);
   };
-
   // Функция для включения режима перемешивания
   const toggleShuffle = () => {
     dispatch(setIsShuffle(!isShuffle));
   };
-
   // Функция для воспроизведения и паузы
   const togglePlay = () => {
     if (audio) {
@@ -71,7 +67,6 @@ export const Player = () => {
     }
     dispatch(setIsPlaying(!isPlaying));
   };
-
   // Функция для воспроизведения следующего трека
   const nextTrackClick = () => {
     if (currentTrackIndex < currentTrackList.length - 1) {
@@ -79,7 +74,6 @@ export const Player = () => {
       dispatch(setCurrentTrack(nextTrack));
     }
   };
-
   // Функция для воспроизведения предыдущего трека
   const prevTrackClick = () => {
     if (currentTrackIndex !== 0) {
@@ -87,14 +81,12 @@ export const Player = () => {
       dispatch(setCurrentTrack(prevTrack));
     }
   };
-
   // Меняем громкость при изменении ползунка громкости
   useEffect(() => {
     if (audio) {
       audio.volume = parseFloat(isVolume);
     }
   }, [isVolume, audio]); // была ошибка
-
   useEffect(() => {
     const audio = audioRef.current;
     audio?.addEventListener("ended", handleEnded);
@@ -223,18 +215,17 @@ export const Player = () => {
                     styles._btn_icon
                   )}
                 >
-                  <svg className={styles.track_play__like_svg}>
-                    <use href="/img/icon/sprite.svg#icon-like"></use>
-                  </svg>
-                </div>
-                <div
-                  className={classNames(
-                    styles.track_play__dislike,
-                    styles._btn_icon
-                  )}
-                >
-                  <svg className={styles.track_play__dislike_svg}>
-                    <use href="/img/icon/sprite.svg#icon-dislike"></use>
+                  <svg
+                    className={styles.track_play__like_svg}
+                    onClick={handleLike}
+                  >
+                    <use
+                      href={
+                        isLiked
+                          ? "/img/icon/sprite.svg#icon-dislike"
+                          : "/img/icon/sprite.svg#icon-like"
+                      }
+                    ></use>
                   </svg>
                 </div>
               </div>

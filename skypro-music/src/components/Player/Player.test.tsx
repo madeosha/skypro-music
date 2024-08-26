@@ -13,6 +13,13 @@ interface RootState {
     currentTrack: Track | null;
     isPlaying: boolean;
     isShuffle: boolean;
+    likedTracks: Track[];
+  };
+  auth: {
+    tokens: {
+      accessToken: string;
+      refreshToken: string;
+    };
   };
 }
 
@@ -65,6 +72,13 @@ describe("Корректный рендер компонента Player", () => 
         },
         isPlaying: false,
         isShuffle: false,
+        likedTracks: [],
+      },
+      auth: {
+        tokens: {
+          accessToken: "dummyAccessToken",
+          refreshToken: "dummyRefreshToken",
+        },
       },
     };
 

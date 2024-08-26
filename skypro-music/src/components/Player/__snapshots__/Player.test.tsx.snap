@@ -148,20 +148,10 @@ exports[`Корректный рендер компонента Player Корр�
             >
               <svg
                 className="track_play__like_svg"
+                onClick={[Function]}
               >
                 <use
                   href="/img/icon/sprite.svg#icon-like"
-                />
-              </svg>
-            </div>
-            <div
-              className="track_play__dislike _btn_icon"
-            >
-              <svg
-                className="track_play__dislike_svg"
-              >
-                <use
-                  href="/img/icon/sprite.svg#icon-dislike"
                 />
               </svg>
             </div>

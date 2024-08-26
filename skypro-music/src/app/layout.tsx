@@ -16,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <>
+      <html lang="ru">
       <ReduxProvider>
-      <body className={montserrat.className}>{children}</body>
+          <body className={montserrat.className}>{children}</body>
       </ReduxProvider>
     </html>
+    </>
   );
 }
